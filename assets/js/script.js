@@ -190,9 +190,7 @@ $(".list-group").on("click", "span", function() {
 
 $(".list-group").on("change", "input[type='text']", function() {
   // get current text
-  var date = $(this)
-    .val()
-    .trim();
+  var date = $(this).val();
 
   // get the parent ul's id attribute
   var status = $(this)
@@ -288,4 +286,8 @@ $("#remove-tasks").on("click", function() {
 // load tasks for the first time
 loadTasks();
 
-
+setInterval(function() {
+  $(".card .list-group-item").each(function(index, el) {
+    auditTask(el);
+  });
+}, (1000 * 60) * 30);
